@@ -55,7 +55,7 @@ value=pop();
 return value;
 }
 void push(long int ch){
-    if(top>50){
+    if(top>10){
         printf("Stack OverFlow");
         exit(1);
     }
