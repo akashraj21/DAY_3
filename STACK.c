@@ -52,7 +52,7 @@ void initialize()
                 ptr();
                 break;
             default :
-                printf("\n Invalid Choose Correct One");
+                printf("\n Invalid ");
                 
         }
     }while(ch != 5);    
