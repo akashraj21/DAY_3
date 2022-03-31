@@ -1,6 +1,6 @@
 #include<stdio.h>
 #include<conio.h>
-#define Length 20
+#define Length 10
 
 
 void initalize();
@@ -32,8 +32,6 @@ void initalize()
     int ch;
     
     do {
-        printf("\n  *****Queue*****");
-        
         printf("\n 1. Enqueue Operation");
         printf("\n 2. Dequeue Operation");
         printf("\n 3. Display");
@@ -109,7 +107,7 @@ void display()
         
         printf("\n Queue : \n");
         for(int i = front; i <= rear; i++){
-            printf("-| %d |", q.arr[i]);
+            printf(" %d ", q.arr[i]);
         }
     }
     
