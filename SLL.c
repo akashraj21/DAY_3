@@ -21,7 +21,7 @@ int main()
     int ch,element;
     while(1)
     {
-        printf("\n1. Insert new item. 2. Insert After. 3. Insert Last. 4. Delete item. 5. Delete First . 6.Delete Last 7.Make the linked list reverse 8. Print Linked List in Reverse way. 9.Search item 10.Sum 11.Print 12.Exit\n--------------------------------------------------------------------------------------\n");
+        printf("\n1. Insert new item.\n2. Insert After.\n3. Insert Last.\n4. Delete item.\n5. Delete First.\n6.Delete Last.\n7.Make the linked list reverse.\n8. Print Linked List in Reverse way.\n9.Search item\n10.Sum\n11.Print\n12.Exit\n--------------------------------------------------------------------------------------\n");
         printf("enter choice of input: ");
         scanf("%d",&ch);
         if(ch==1)
