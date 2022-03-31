@@ -3,14 +3,18 @@
 #include <math.h>
 #include <string.h>
 #define N 10
-long int PostFix_eva();
-void push(long int ch);
-int top;//check top
-int pop();//pop operation
-int isEmpty();/check Is Empty or not
-long int Stack[N];
-char PostFix_exp[N];
 
+long int PostFix_eva();
+
+void push(long int ch);
+
+int top;
+int pop();
+int isEmpty();
+
+long int Stack[N];
+
+char PostFix_exp[N];
 
 int main()
 {
@@ -53,6 +57,14 @@ long int PostFix_eva()
 value=pop();
 return value;
 }
+int isEmpty(){
+    if(top==-1){
+        return 1;
+    }
+    else{
+        return 0;
+    }
+}
 void push(long int ch){
     if(top>10){
         printf("Stack OverFlow");
@@ -61,18 +73,12 @@ void push(long int ch){
     top=top+1;
     Stack[top]=ch;
 }
+
+
 int pop(){
     if(isEmpty()){
         printf("Stack is Empty");
         exit(1);
     }
     return(Stack[top--]);
-}
-int isEmpty(){
-    if(top==-1){
-        return 1;
-    }
-    else{
-        return 0;
-    }
 }
