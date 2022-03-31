@@ -4,7 +4,7 @@
 #include <string.h>
 #define N 10
 long int PostFix_eva();
-void push(long int ch);//Push Operation 
+void push(long int ch);
 int top;//check top
 int pop();//pop operation
 int isEmpty();/check Is Empty or not
@@ -12,7 +12,6 @@ long int Stack[N];
 char PostFix_exp[N];
 
 
-//Calling Main Function....
 int main()
 {
     int Ev_Value;
@@ -77,10 +76,3 @@ int isEmpty(){
         return 0;
     }
 }
-///Make an empty stack implemented as an array.
-//Get an input postfix expression from the user.
-//Scan the expression from left to right.
-//During your scanning:
-///If you encounter an operand, push it onto the stack and continue scanning.
-///If you encounter an operator, pop only the topmost two elements from the stack, apply the operator on the elements and push the result back to the stack.
-//When you reach the end of the string, there should be only one element on to the stack. Pop this value to get the result of your postfix expression.//
