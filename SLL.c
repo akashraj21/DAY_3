@@ -1,17 +1,17 @@
 #include<stdio.h>
 #include<stdlib.h>
 
-struct node     //make node for linked list using structure
+struct node     
 {
-    int value;            //value part of node contains the element
-    struct node *next;    //the next part of node contains the address of next element of list
+    int value;            //contains the element
+    struct node *next;    //address of next element of list
 };
 
-struct node *head;    //contains the address of first element of linked list
+struct node *head;   
 
 void init()
 {
-    head=NULL;    //initialize the beginning(head) of list to NULL
+    head=NULL;    //initialize  beginning(head) of list to NULL
 }
 
 int main()
@@ -98,13 +98,13 @@ int main()
 void insertfirst(int element)   //inserts element in linked list
 {
     struct node *New;
-    New=(struct node*)malloc(sizeof(struct node));    //New named node declared with size of node declared before
-    New->value=element;       //inserts the new element to the value part of node New
-    New->next=NULL;           //makes the next part of node New NULL so that no garbage value remains
-    New->next=head;         //the address of previously first node, which was stored in head is now assigned to next part of node New
-    head=New;              //the address of new first element which is present in node New is assigned to head node
+    New=(struct node*)malloc(sizeof(struct node));   
+    New->value=element;       
+    New->next=NULL;           
+    New->next=head;      
+    head=New;             
 }
-void insertafter(int elem, int num)   //inserts element for any given element present in linked list
+void insertafter(int elem, int num)   
 {
     struct node* New;
     New=(struct node*)malloc(sizeof(struct node));
@@ -152,11 +152,11 @@ void deleteitem(int ele)
         cur=cur->next;
     }
     if(prev!=NULL)
-        prev->next=cur->next;       //the address of next node after the node containing element to be deleted is assigned to the previous node of the node containing the element to be deleted
-    free(cur);                      //memory of the structure cur is deallocated
+        prev->next=cur->next;      
+    free(cur);//memory of the structure cur is deallocated               
 }
 
-void deletefirst()    //delete the first element
+void deletefirst()   
 {
     struct node* cur;
     if(head==NULL)
@@ -186,7 +186,7 @@ void deletelast()   //delete the last element
 
 
 
-void reverselist()    //reverse the linked list
+void reverselist()    
 {
     struct node* prev=NULL;
     struct node* cur=head;
@@ -198,7 +198,7 @@ void reverselist()    //reverse the linked list
         prev=cur;
         cur=nxt;
     }
-    head=prev;      //points the head pointer to prev as it the new head or beginning in reverse list
+    head=prev;      
 }
 void printReverse(struct node* head)    //print the linked list in reverse way using recursion
 {
@@ -242,11 +242,11 @@ void print()
     struct node *cur=head;            
     int count;
     count=0;
-    while(cur!=NULL)                  //the loop traverse until it gets any NULL node
+    while(cur!=NULL)                  
     {
         printf("%d->",cur->value);    
-        count++;                      //counts the number of nodes or elements present in list
-        cur=cur->next;                //moves cur pointer to next node to check and get value
+        count++;                      
+        cur=cur->next;                
     }
     printf("NULL\n");
     printf("number of nodes %d\n",count);
