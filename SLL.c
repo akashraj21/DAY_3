@@ -11,7 +11,7 @@ struct node *head;
 
 void init()
 {
-    head=NULL;    //initialize  beginning(head) of list to NULL
+    head=NULL;
 }
 
 int main()
@@ -95,7 +95,7 @@ int main()
     }
     return 0;
 }
-void insertfirst(int element)   //inserts element in linked list
+void insertfirst(int element)  
 {
     struct node *New;
     New=(struct node*)malloc(sizeof(struct node));   
@@ -119,7 +119,7 @@ void insertafter(int elem, int num)
     prev->next=New;
 }
 
-void insertlast(int ele)    //insert at the last of linked list
+void insertlast(int ele)    
 {
     struct node *New, *temp;
     New = (struct node*)malloc(sizeof(struct node));
@@ -153,7 +153,7 @@ void deleteitem(int ele)
     }
     if(prev!=NULL)
         prev->next=cur->next;      
-    free(cur);//memory of the structure cur is deallocated               
+    free(cur);               
 }
 
 void deletefirst()   
@@ -165,7 +165,7 @@ void deletefirst()
     head=head->next;
     free(cur);
 }
-void deletelast()   //delete the last element
+void deletelast()   
 {
     if(head==NULL)
     {
@@ -215,12 +215,12 @@ int searchitem(int ele)
 	while (temp != 0)
 	{
 		if (temp->value == ele)
-            return 1 ;          //element is found
+            return 1 ;          
 		temp = temp->next;
 	}
 	return 0 ;
 }
-void sum()    //sum of elements of the linked list
+void sum()    
 {
     int s;
     struct node *cur=head;
@@ -234,7 +234,7 @@ void sum()    //sum of elements of the linked list
 }
 void print()
 {
-    if(head==NULL)    //condition to check whether list is empty
+    if(head==NULL)  
     {
         printf("list is empty\n");
         return;
@@ -251,5 +251,4 @@ void print()
     printf("NULL\n");
     printf("number of nodes %d\n",count);
 }
-
 
