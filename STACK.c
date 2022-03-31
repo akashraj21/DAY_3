@@ -6,7 +6,7 @@ void initialize();
 void push();
 void display();
 void pop();
-void peep();
+void peek();
 void (*ptr)();
 
 int Array_Val[N], Top = -1;
@@ -27,10 +27,10 @@ void initialize()
     {
         printf("\n 1. PUSH");
         printf("\n 2. POP");
-        printf("\n 3. PEEP");
+        printf("\n 3. PEEK");
         printf("\n 4. DISPLAY");
         printf("\n 5. EXIT");
-        printf("\n *******************");
+        printf("\n");
         printf("\n\n Enter the Option : ");
         scanf("%d", &ch);
         switch(ch)
@@ -44,7 +44,7 @@ void initialize()
                 ptr();
                 break;
             case 3:
-                ptr = peep;
+                ptr = peek;
                 ptr();
                 break;
             case 4:
@@ -53,7 +53,7 @@ void initialize()
                 break;
             default :
                 printf("\n Invalid Choose Correct One");
-            
+                
         }
     }while(ch != 5);    
 }
@@ -109,7 +109,7 @@ void pop()
     }
 }
 
-void peep()
+void peek()
 {
     
     if (Top == -1)
