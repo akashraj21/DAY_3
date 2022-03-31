@@ -15,112 +15,32 @@ struct node{
 };
 
 struct node *start = NULL;
-struct node *create_ll(struct node *);
+
+struct node *create_N(struct node *);
+
 struct node *display(struct node *);
+
 struct node *insert_beg(struct node *);
+
 struct node *insert_end(struct node *);
+
 struct node *delete_beg(struct node *);
+
 struct node *delete_end(struct node *);
+
 struct node *del_list(struct node *);
+
 struct node *search(struct node *);
+
 struct node *insert_aft(struct node *);
+
 struct node *del_node(struct node *);
 
-int main()
-{
-    initalize();
-    
-    return 0;
-    
-}
 
-void initalize(){
-    
-    int ch;
-    
-    do {
-        printf("\n 1. Create a List");
-        printf("\n 2. Display a List");
-        printf("\n 3. Add node at the Begining");
-        printf("\n 4. Add node at the end");
-        printf("\n 5. Add Node after a number");
-        printf("\n 6. Delete node at the Begining");
-        printf("\n 7. Delete node at the End");
-        printf("\n 8. Delete a node");
-        printf("\n 9. Delete entire List");
-        printf("\n 10. Search a Number");
-        printf("\n 11. Exit");
-        printf("\n Enter option : ");
-        scanf("%d", &ch);
-        switch(ch){
-            
-            case 1:
-            {
-                start = create_ll(start);
-                break;
-            }
-            case 2:
-            {
-                
-                start = display(start);
-                break;
-            }
-            case 3:
-            {
-                start = insert_beg(start);
-                break;
-            }
-            case 4:
-            {
-                start = insert_end(start);
-                break;
-            }
-            case 5:
-            {
-                start = insert_aft(start);
-                break;
-            }
-            case 6:
-            {
-                start = delete_beg(start);
-                break;
-            }
-            case 7:
-            {
-                start = delete_end(start);
-                break;
-            }
-            case 8:
-            {
-                start = del_node(start);
-                break;
-            }
-            case 9:
-            {
-                start = del_list(start);
-                break;
-            }
-            case 10:
-            {
-                start = search(start);
-                break;
-            }
-            case 11:
-            {
-                printf("Thank You");
-                break;
-            }
-            default:
-            {
-                printf("Invalid Input");
-                break;
-            }
-        }
-    }while(ch != 11);
-    
-}
 
-struct node *create_ll(struct node *start)
+
+
+struct node *create_N(struct node *start)
 {
     
     struct node *new_node, *ptr;
@@ -361,4 +281,95 @@ struct node *del_node(struct node *start)
         
         return start;
     }
+    void initalize(){
+    
+    int ch;
+    
+    do {
+        printf("\n 1. Create a List");
+        printf("\n 2. Display a List");
+        printf("\n 3. Add node at the Begining");
+        printf("\n 4. Add node at the end");
+        printf("\n 5. Add Node after a number");
+        printf("\n 6. Delete node at the Begining");
+        printf("\n 7. Delete node at the End");
+        printf("\n 8. Delete a node");
+        printf("\n 9. Delete entire List");
+        printf("\n 10. Search a Number");
+        printf("\n 11. Exit");
+        printf("\n Enter option : ");
+        scanf("%d", &ch);
+        switch(ch){
+            
+            case 1:
+            {
+                start = create_N(start);
+                break;
+            }
+            case 2:
+            {
+                
+                start = display(start);
+                break;
+            }
+            case 3:
+            {
+                start = insert_beg(start);
+                break;
+            }
+            case 4:
+            {
+                start = insert_end(start);
+                break;
+            }
+            case 5:
+            {
+                start = insert_aft(start);
+                break;
+            }
+            case 6:
+            {
+                start = delete_beg(start);
+                break;
+            }
+            case 7:
+            {
+                start = delete_end(start);
+                break;
+            }
+            case 8:
+            {
+                start = del_node(start);
+                break;
+            }
+            case 9:
+            {
+                start = del_list(start);
+                break;
+            }
+            case 10:
+            {
+                start = search(start);
+                break;
+            }
+            case 11:
+            {
+                printf("Thank You");
+                break;
+            }
+            default:
+            {
+                printf("Invalid Input");
+                break;
+            }
+        }
+    }while(ch != 11);
+    
+}
+
+int main()
+{
+    initalize();
+    return 0;
+}
     
