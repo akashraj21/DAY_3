@@ -1,0 +1,207 @@
+#include <stdio.h>
+#include <stdlib.h>
+void menu(void);
+struct node{
+	int i;
+	struct node *lc;
+	struct node *rc;
+}*root = NULL,*parent;
+
+void insert(void){
+
+	struct node *ptr;
+	int item,f=0;
+	printf("\nEnter item: ");
+	scanf("%d",&item);
+	if(root==NULL){
+		root = (struct node*)malloc(sizeof(sizeof(struct node)));
+		root->i=item;
+		root->rc = NULL;
+		root->lc = NULL;	
+	}
+	else{
+		ptr = root;
+		while(ptr != NULL && f==0){
+			if(ptr->i>item){
+				parent = ptr;
+				ptr = ptr->lc;
+			}
+			else if(ptr->i<item){
+				parent = ptr;
+				ptr = ptr->rc;
+			}
+
+			else
+				f=1;
+		}
+
+		if(f==1){
+
+			printf("\nDATA ALREADY EXISIT");
+		}
+		else{
+
+			ptr = (struct node *)malloc(sizeof(struct node));
+			ptr->i = item;
+			ptr->rc = NULL;
+			ptr->lc = NULL;
+			if(parent->i<item)
+				parent->rc = ptr;
+			else
+				parent->lc = ptr;
+		}
+	}
+}
+
+void display(struct node *ptr,int l){
+     int i;
+     if(ptr != NULL){
+            display(ptr->rc,l+5);
+            printf("%d \t",ptr->i);
+            display(ptr->lc,l+5);
+            }
+
+          }
+
+void preorder(struct node *ptr){
+	if(ptr !=NULL){
+		printf("%d ",ptr->i);
+		preorder(ptr->lc);
+		preorder(ptr->rc);
+	}
+}
+
+void inorder(struct node *ptr){
+	if(ptr !=NULL){
+    inorder(ptr->lc);
+	  printf("%d ",ptr->i);
+    inorder(ptr->rc);
+	}
+}
+
+void postorder(struct node *ptr){
+	if(ptr !=NULL){
+    postorder(ptr->lc);
+    postorder(ptr->rc);
+ 	  printf("%d ",ptr->i);
+	}
+}
+
+int succ(struct node *temp){
+	temp = temp->rc;
+	while(temp != NULL){
+		if(temp->lc == NULL)
+			return temp->i;
+		temp = temp->lc;
+	}
+}
+
+void delete(int item){
+	struct node *ptr;
+	int  f = 0,d;
+	parent = NULL;
+	ptr = root;
+	while(ptr != NULL&&f==0){
+		if(ptr->i>item){
+			parent = ptr;
+			ptr = ptr->lc;
+		}
+		else if(ptr->i<item){
+			parent = ptr;
+			ptr = ptr->rc;
+		}
+
+			else
+				f=1;
+	}
+	if(f==0 && ptr==NULL){
+		printf("\nItem Not Found");
+	}
+	else{
+		if(ptr->rc==NULL && ptr->lc==NULL){
+			if(parent->rc == ptr){
+				parent->rc =  NULL;
+				free(ptr);
+			}
+			else{
+				parent->lc = NULL;
+				free(ptr);
+			}
+		}
+		else if(ptr->lc!=NULL && ptr->rc!=NULL){
+			d = succ(ptr);
+			delete(d);
+			ptr->i = d;
+		}
+		else{
+			if(parent->lc==ptr){
+				if(ptr->rc==NULL){
+					parent->lc = ptr->rc;
+				}
+				else{
+					parent->lc = ptr->rc;
+				}
+			}
+			else{
+				if(ptr->rc==NULL){
+					parent->rc = ptr->lc;
+				}
+				else{
+					parent->rc = ptr->rc;
+				}
+			}
+			free(ptr);
+		}
+	}	
+
+}
+
+void menu(void){
+     int op,i;
+     printf("\n1 for Insert\n2 for Display\n3 for Preorder\n4 for Inorder\n5 for Postorder\n6 for Delete\n7 for Exit");
+     printf("\nEnter Choice: ");
+     scanf("%d",&op);
+     switch(op){
+                case 1:
+                     insert();
+                     menu();     
+                break;
+                case 2:
+                      if(root != NULL)
+                        display(root,0);
+                      else
+                        printf("\nTREE IS EMPTY");
+                     menu();
+                break;
+	            case 3:
+                	preorder(root);
+                	printf("\n");
+                	menu();
+           		break;
+           		case 4:
+               		inorder(root);
+                	printf("\n");
+                	menu();
+           		break;
+           		case 5:
+                	postorder(root);
+                	printf("\n");
+                	menu();
+                case 6:
+                	printf("\nEnter item: ");
+                	scanf("%d",&i);
+                	delete(i);
+                	menu();
+                break;
+                case 7:
+                     return ;
+                break;
+                default:
+                        printf("\nInvalid Option");
+                        menu();
+                }
+  }     
+int main(){
+    menu();
+    return 0;
+    }
