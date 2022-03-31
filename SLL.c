@@ -3,8 +3,8 @@
 
 struct node     
 {
-    int value;            //contains the element
-    struct node *next;    //address of next element of list
+    int value;            
+    struct node *next;    
 };
 
 struct node *head;   
@@ -200,7 +200,7 @@ void reverselist()
     }
     head=prev;      
 }
-void printReverse(struct node* head)    //print the linked list in reverse way using recursion
+void printReverse(struct node* head)    
 {
     if (head == NULL)
        return;
