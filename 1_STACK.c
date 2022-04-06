@@ -1,123 +1,83 @@
 #include<stdio.h>
-#include<conio.h>
-#define N 10
+#include<stdlib.h>
+#include<malloc.h>
 
-void initialize();
-void push();
-void display();
-void pop();
-void peek();
-void (*ptr)();
-
-int Array_Val[N], Top = -1;
-
-int main()
-{
-    ptr = initialize;
-    ptr();
+struct stack{
+    int data;
+    struct stack *next;
+};
+struct stack *push(struct stack *,int);
+struct stack *pop(struct stack *);
+struct stack *Display(struct stack *);
+struct stack *top=NULL;
+int main(){
+    int val,opt;
     
+    do{
+        printf("\n1_PUSH \n2_POP \n3_DISPLAY\n");
+        scanf("%d",&opt);
+        
+        switch(opt){
+            case 1:printf("Enter a Number to PUSH\n");
+            scanf("\n%d",&val);
+            top=push(top,val);
+            break;
+            case 2:top=pop(top);
+            break;
+            case 3:top=Display(top);
+            break;
+            case 4:printf("THANK YOU");
+            exit(0);
+            default:printf("Incorrect One Please Choose Above One Option");
+            
+        }
+    }while( opt!=5);
     return 0;
 }
 
-void initialize()
-{
-    int ch;
-    
-    do 
-    {
-        printf("\n 1. PUSH");
-        printf("\n 2. POP");
-        printf("\n 3. PEEK");
-        printf("\n 4. DISPLAY");
-        printf("\n 5. EXIT");
-        printf("\n");
-        printf("\n\n Enter the Option : ");
-        scanf("%d", &ch);
-        switch(ch)
-        {
-            case 1:
-                ptr = push;
-                ptr();
-                break;
-            case 2:
-                ptr = pop;
-                ptr();
-                break;
-            case 3:
-                ptr = peek;
-                ptr();
-                break;
-            case 4:
-                ptr = display;
-                ptr();
-                break;
-            default :
-                printf("\n Invalid ");
-                
-        }
-    }while(ch != 5);    
-}
-void display()
-{
-    if (Top == -1)
-    {
-        printf("\n The Stack is Empty");
-    }
-    else
-    {
-        for(int i = Top; i >= 0; i--)
-        {
-            printf("\n|%d|", Array_Val[i]);
-            printf("\n -- ");
-        }
-    }
-    
-}
-void push()
-{
-    int Val;
-    
-    printf("\n Enter the Number to be Pushed : ");
-    scanf("%d", &Val);
-    
-    if (Top == N-1)
-    {
-        printf("\n STACK OVERFLOW");
-    }
-    else
-    {
-        Top++;
-        Array_Val[Top]=Val;
-        printf(" %d is Pushed into Stack", Val);
-    }
-    
-}
 
-void pop()
-{
-    int Val;
-    
-    if (Top == -1)
-    {
-        printf("\n STACK UNDERFLOW");
+struct stack *push(struct stack *top,int val){
+    struct stack *ptr;
+    ptr=(struct stack *)malloc(sizeof(struct stack));
+    ptr->data=val;
+    if(top==NULL){
+        ptr->next=NULL;
+        top=ptr;
     }
-    else
-    {
-        Val = Array_Val[Top];
-        Top--;
-        printf("\n The value poped : %d", Val);
+    else{
+        ptr->next=top;
+        top=ptr;
     }
+    return top;
 }
-
-void peek()
-{
-    
-    if (Top == -1)
-    {
-        printf("\n Stack is Empty");
+struct stack *pop(struct stack *top){
+    struct stack *ptr;
+    ptr=top;
+    if(top==NULL){
+        printf("STACK IS UNDERFLOW");
+    }else{
+        top=top->next;
+        printf("[%d]",ptr->data);
     }
-    else
-    {
-        printf("\n The element at the top : %d", Array_Val[Top]);
+    return top;
+}
+struct stack *Display(struct stack *top){
+    struct stack *ptr;
+    ptr=top;
+    int i=0;
+    printf("STACK DISPLAY:\n");
+    printf("------------");
+    if(top=NULL){
+        printf("\n the stack is empty");
     }
+    else{
+        while(ptr!=NULL){
+            printf("\n|%d|",ptr->data);
+            ptr=ptr->next;
+            i++;
+        }
+        
+    }
+    printf("\n------------");
+    return top;
 }
